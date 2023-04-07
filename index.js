@@ -1,7 +1,12 @@
-import express, { urlencoded } from "express";
-import { UsersRouter } from "./routes/index.js";
+import express from "express";
 import usersRouter from "./routes/users.route.js";
 import connectMongoDb from "./mongo/index.js";
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const PORT = 7777;
 
@@ -19,5 +24,5 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-    res.send({msg: "Hello"})
+    res.sendFile(__dirname + "/index.html");
 });

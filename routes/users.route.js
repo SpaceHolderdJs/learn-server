@@ -13,6 +13,18 @@ usersRouter.get("/", async (req, res) => {
   }
 });
 
+usersRouter.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+    res.status(200).send(user);
+  } catch (e) {
+    console.log("error", e);
+    res.sendStatus(500);
+  }
+});
+
 usersRouter.post("/", async (req, res) => {
   try {
     const { name, age, location, skills, salary } = req.body;
@@ -29,8 +41,8 @@ usersRouter.post("/", async (req, res) => {
 usersRouter.patch("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-   
-    await User.findByIdAndUpdate(id, {...req.body});
+
+    await User.findByIdAndUpdate(id, { ...req.body });
 
     const user = await User.findById(id);
 

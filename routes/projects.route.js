@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Project from "../mongo/schemas/project.schema";
+import Project from "../mongo/schemas/project.schema.js";
 
 const projectRouter = Router();
 

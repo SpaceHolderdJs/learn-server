@@ -4,7 +4,7 @@ const ProjectSchema = new Schema({
     name: String,
     duration: Number,
     users: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Users',
     }],
 });
